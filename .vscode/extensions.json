@@ -7,7 +7,8 @@
       "wholroyd.jinja",
       "formulahendry.code-runner",
       "abusaidm.html-snippets",
-      "xabikos.JavaScriptSnippets"
+      "xabikos.JavaScriptSnippets",
+      "ecmel.vscode-html-css"
     ]
 }
   
