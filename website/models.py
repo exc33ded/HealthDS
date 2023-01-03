@@ -19,7 +19,7 @@ class Diabetes(db.Model):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(150))
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
-    name = db.Column(db.String(150))
     diabetes = db.relationship('Diabetes') # Add the id of different Notes (capatilize table letter required)

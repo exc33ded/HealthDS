@@ -39,8 +39,8 @@ def logout():
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
+        name = request.form.get('name')
         email = request.form.get('email')
-        first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
@@ -49,14 +49,14 @@ def sign_up():
             flash('Email already exist', category='error')
         elif len(email) < 4:
             flash('Email must be greater than 4 characters.', category='error')
-        elif len(first_name) < 2:
+        elif len(name) < 2:
             flash('Name must be greater than 2 characters.', category='error')
         elif password1 != password2:
             flash('Passwords do not match.', category='error')
         elif len(password1) < 7:
             flash('Password must be greater than 7.', category='error')
         else:
-            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256')) # This is model
+            new_user = User(name=name, email=email, password=generate_password_hash(password1, method='sha256')) # This is model
             #add user to the database.
             db.session.add(new_user)
             db.session.commit()
