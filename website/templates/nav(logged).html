@@ -29,10 +29,19 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav ml-auto">
-
+        <div class="navbar-nav mr-auto">
             <a href="/home" class="nav-item nav-link" id="home">Home</a>
-            <a href="/logout" class="nav-item nav-link" id="logout">logout</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Diabetes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/diabetes">Make Prediction</a>
+                  <a class="dropdown-item" href="#">History</a>
+              </li>
+            <a href="/logout" class="nav-item nav-link" id="logout">Logout</a>
         </div>
     </div>
 </nav>

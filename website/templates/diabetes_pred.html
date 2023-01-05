@@ -1,0 +1,39 @@
+{% include "nav(logged).html" %}
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+
+  <meta charset="UTF-8">
+  <title>DIABATES API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body bgcolor="cyan">
+	<h1>Diabates Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('views.diabetes')}}"method="post">
+        <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required"/>
+        <input type="text" name="Glucose" placeholder="Glucose Level" required="required" />
+		    <input type="text" name="BloodPressure" placeholder="Blood Pressure Level" required="required" />
+        <input type="text" name="SkinThickness" placeholder="Skin Thickness" required="required" />
+        <input type="text" name="Insulin" placeholder="Insulin Level" required="required" />
+        <input type="text" name="BMI" placeholder="Body Mass Index" required="required" />
+        <input type="text" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required="required">
+        <input type="text" name="Age" placeholder="Enter Age" required="required">
+        <button type="submit">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}<br>
+<a href="/home">GO BACK</a>
+  <br>
+
+</body>
+</html>
