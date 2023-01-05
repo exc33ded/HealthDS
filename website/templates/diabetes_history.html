@@ -1,2 +1,21 @@
 {% include 'nav(logged).html' %}
 
+<table>
+    <th>Date</th>
+    <th>Pregnancies</th>
+    <th>Glucose</th>
+    <th>Blood Pressure</th>
+    <th>Skin Thickness</th>
+    <th>Insulin</th>
+    <th>BMI</th>
+    <th>DPF</th>
+    <th>Age</th>
+
+    <ul class="list-group list-group-flush" id="diabetes">
+        {% for diabetes in user.diabetes %}
+            <li class="list-group-item">
+                {{ diabetes.date }}
+            </li>
+        {% endfor %}
+    </ul>
+</table>

@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, flash, request, jsonify
 from flask_login import login_required, current_user
-from .models import Diabetes
+from .models import Diabetes, User
 from . import db
 import pickle
 import pandas as pd
@@ -43,5 +43,26 @@ def diabetes():
             senddata='According to the given details person does not have Diabetes'
         else:
             senddata='According to the given details chances of having Diabetes are High, So Please Consult a Doctor'
+
+        new_data = Diabetes(pregnancies=Pregnancies, 
+                            glucose=Glucose,
+                            bloodpressure=BloodPressure,
+                            skinthichness=SkinThickness,
+                            insulin=Insulin,
+                            bmi=BMI,
+                            dpf=DiabetesPedigreeFunction,
+                            age=Age,
+                            outcome=prediction[0],
+                            user_id=current_user.id)
+        db.session.add(new_data)
+        db.session.commit()
+
         return render_template('diabetes_pred.html', prediction_text=senddata)
 
+
+
+@views.route("/diabetes_history")
+@login_required
+def diabetes_history():
+    all_data = User.query.all()
+    return render_template('diabetes_history.html', user=current_user)
