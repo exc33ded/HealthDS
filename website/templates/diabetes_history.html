@@ -1,6 +1,8 @@
 {% include 'nav(logged).html' %}
 
-<table>
+<table style="border:1px solid black;
+width: 100%;">
+    <tr>
     <th>Date</th>
     <th>Pregnancies</th>
     <th>Glucose</th>
@@ -10,12 +12,20 @@
     <th>BMI</th>
     <th>DPF</th>
     <th>Age</th>
-
-    <ul class="list-group list-group-flush" id="diabetes">
-        {% for diabetes in user.diabetes %}
-            <li class="list-group-item">
-                {{ diabetes.date }}
-            </li>
+    <th>Outcome</th>
+    </tr>
+    {% for diabetes in user.diabetes %}
+    <tr>
+        <td>{{ diabetes.date }}</td>
+        <td>{{ diabetes.pregnancies }}</td>
+        <td>{{ diabetes.glucose }}</td>
+        <td>{{ diabetes.bloodpressure }}</td>
+        <td>{{ diabetes.skinthichness }}</td>
+        <td>{{ diabetes.insulin }}</td>
+        <td>{{ diabetes.bmi }}</td>
+        <td>{{ diabetes.dpf }}</td>
+        <td>{{ diabetes.age }}</td>
+        <td>{{ diabetes.outcome }}</td>
+    </tr>  
         {% endfor %}
-    </ul>
 </table>

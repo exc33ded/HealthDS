@@ -39,6 +39,7 @@ def diabetes():
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
         prediction = model1.predict(input_data_reshaped)
         senddata=""
+        predi = prediction[0]
         if (prediction[0]== 0):
             senddata='According to the given details person does not have Diabetes'
         else:
@@ -52,7 +53,7 @@ def diabetes():
                             bmi=BMI,
                             dpf=DiabetesPedigreeFunction,
                             age=Age,
-                            outcome=prediction[0],
+                            outcome=predi,
                             user_id=current_user.id)
         db.session.add(new_data)
         db.session.commit()
@@ -64,5 +65,4 @@ def diabetes():
 @views.route("/diabetes_history")
 @login_required
 def diabetes_history():
-    all_data = User.query.all()
     return render_template('diabetes_history.html', user=current_user)
