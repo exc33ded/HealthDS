@@ -13,7 +13,7 @@ class Diabetes(db.Model):
     bmi = db.Column(db.Integer)
     dpf = db.Column(db.Integer)
     age = db.Column(db.Integer)
-    outcome = db.Column(db.Integer)
+    outcome = db.Column(db.String(10000))
     # Getting user(Foreign Key), Here we get the user by it's ID
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # not here
 

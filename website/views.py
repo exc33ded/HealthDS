@@ -39,12 +39,13 @@ def diabetes():
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
         prediction = model1.predict(input_data_reshaped)
         senddata=""
-        predi = prediction[0]
+        predi = ""
         if (prediction[0]== 0):
             senddata='According to the given details person does not have Diabetes'
+            predi = "Not Diabetic"
         else:
             senddata='According to the given details chances of having Diabetes are High, So Please Consult a Doctor'
-
+            predi = "Diabetic"
         new_data = Diabetes(pregnancies=Pregnancies, 
                             glucose=Glucose,
                             bloodpressure=BloodPressure,
