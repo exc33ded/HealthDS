@@ -2,8 +2,6 @@
 
 <p id="description">A web based system that will help in predicting multiple diseases in accordance to the data inserted by the user which in result will help in predicting if a person is suffering from diseases or not.</p>
 
-<p align="center"><img src="https://img.shields.io/badge/Health%20Discernment%20System%20-Your%20Health%2C%20Our%20Prioriyt-brightgreen" alt="shields"></p>
-
   
   
 <h2>🧐 Features</h2>
