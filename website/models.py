@@ -17,6 +17,22 @@ class Diabetes(db.Model):
     # Getting user(Foreign Key), Here we get the user by it's ID
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # not here
 
+class Heart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    age = db.Column(db.Integer)
+    sex = db.Column(db.String(8))
+    cp = db.Column(db.String(4))
+    tresbps = db.Column(db.Integer)
+    chol = db.Column(db.Integer)
+    fbs = db.Column(db.String(2))
+    restecg = db.Column(db.String(3))
+    thalach = db.Column(db.Integer)
+    exang = db.Column(db.String(2))
+    oldpeak = db.Column(db.Float(3))
+
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
