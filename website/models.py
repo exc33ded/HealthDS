@@ -23,7 +23,7 @@ class Heart(db.Model):
     age = db.Column(db.Integer)
     sex = db.Column(db.String(8))
     cp = db.Column(db.String(4))
-    tresbps = db.Column(db.Integer)
+    trestbps = db.Column(db.Integer)
     chol = db.Column(db.Integer)
     fbs = db.Column(db.String(2))
     restecg = db.Column(db.String(3))

@@ -1,1 +1,58 @@
 {% include 'nav(logged).html' %}
+
+<form action="{{ url_for('views.heart') }}" method="POST">
+    <label for="age">Age : </label>
+    <input type="text" id="age" name="age">
+    <br>
+
+    <label for="sex">Sex(1:Male,0:Female) : </label>
+    <input type="text" id="sex" name="sex">
+    <br>
+
+    <label for="chest pain type">Chest pain type : </label>
+    <input type="text" id="cp" name="cp">
+    <br>
+
+    <label for="resting blood pressure">Resting Blood Pressure : </label>
+    <input type="text" id="trestbps" name="trestbps">
+    <br>
+
+    <label for="serum cholestoral in mg/dl">Serum cholestoral in mg/dl : </label>
+    <input type="text" id="chol" name="chol">
+    <br>
+
+    <label for="fasting blood pressure">Fasting Blood Pressure : </label>
+    <input type="text" id="fbs" name="fbs">
+    <br>
+
+    <label for="restecg">Resting Electrocardiographic Result : </label>
+    <input type="text" id="restecg" name="restecg">
+    <br>
+
+    <label for="thalach">Maximum Heart Rate Achieved : </label>
+    <input type="text" id="thalach" name="thalach">
+    <br>
+
+    <label for="exang">Exercise Induced Angina : </label>
+    <input type="text" id="exang" name="exang">
+    <br>
+
+    <label for="oldpeak">Oldpeak : </label>
+    <input type="text" id="oldpeak" name="oldpeak">
+    <br>
+
+    <label for="slope">Slope of Peak: </label>
+    <input type="text" id="slope" name="slope">
+    <br>
+
+    <label for="ca">Number of Major Vessels : </label>
+    <input type="text" id="ca" name="ca">
+    <br>
+
+    <label for="thal">Thal : </label>
+    <input type="text" id="thal" name="thal">
+    <br>
+    <br>
+    <input type="submit" value="Submit"><br><br>
+
+    {{ prediction_text }}<br>

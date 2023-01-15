@@ -23,20 +23,20 @@ def diabetes():
     if request.method == 'GET':
         return render_template('diabetes_pred.html')
     else:
-        Pregnancies = request.form['Pregnancies']
-        Glucose = request.form['Glucose']
-        BloodPressure = request.form['BloodPressure']
-        SkinThickness = request.form['SkinThickness']
-        Insulin = request.form['Insulin']
-        BMI = request.form['BMI']
-        DiabetesPedigreeFunction = request.form['DiabetesPedigreeFunction']
-        Age = request.form['Age']
+        Pregnancies = int(request.form['Pregnancies'])
+        Glucose = int(request.form['Glucose'])
+        BloodPressure = int(request.form['BloodPressure'])
+        SkinThickness = int(request.form['SkinThickness'])
+        Insulin = int(request.form['Insulin'])
+        BMI = float(request.form['BMI'])
+        DiabetesPedigreeFunction = float(request.form['DiabetesPedigreeFunction'])
+        Age = int(request.form['Age'])
 
         model1 = pickle.load(open('model/diabetes_final_model.pkl','rb'))
         input_data = (Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age)
-        print(input_data)
         input_data_as_numpy_array= np.asarray(input_data)
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+        print(input_data_reshaped)
         prediction = model1.predict(input_data_reshaped)
         senddata=""
         predi = ""
@@ -73,26 +73,29 @@ def heart():
     if request.method == 'GET':
         return render_template('heart_pred.html')
     else:
-        age = request.form['age']
-        sex = request.form['sex'] 
-        cp = request.form['cp'] 
-        tresrbps = request.form['trestbps']
-        chol = request.form['chol']
-        fbs = request.form['fbs'] 
-        restecg = request.form['restecg'] 
-        thalach = request.form['thalach']
-        exang = request.form['exang'] 
-        oldpeak = request.form['oldpeak'] 
-        slope = request.form['slope'] 
-        ca = request.form['ca'] 
-        thal= request.form['thal']
+        age = int(request.form['age'])
+        sex = int(request.form['sex'])
+        cp = int(request.form['cp'] )
+        trestbps = int(request.form['trestbps'])
+        chol = int(request.form['chol'])
+        fbs = int(request.form['fbs'])
+        restecg = int(request.form['restecg'])
+        thalach = int(request.form['thalach'])
+        exang = int(request.form['exang'])
+        oldpeak = float(request.form['oldpeak'])
+        slope = int(request.form['slope']) 
+        ca = int(request.form['ca'])
+        thal= int(request.form['thal'])
 
         model_heart = pickle.load(open('model/heart_final_model.pkl', 'rb'))
-        input_data = (age, sex, cp, tresrbps, chol, fbs, restecg, thalach,
-                        exang, oldpeak, slope, ca, thal)
+        input_data = (age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal)
+
+        print(input_data)
 
         input_data_as_numpy_array= np.asarray(input_data)
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+        print(input_data_reshaped)
+        
         prediction = model_heart.predict(input_data_reshaped)
         senddata=""
         if (prediction[0]== 0):
@@ -105,7 +108,7 @@ def heart():
         new_data = Heart(age=age,
                         sex=sex,
                         cp=cp,
-                        tresrbps=tresrbps,
+                        trestbps=trestbps,
                         chol=chol,
                         fbs=fbs,
                         restecg=restecg,
