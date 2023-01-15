@@ -30,7 +30,11 @@ class Heart(db.Model):
     thalach = db.Column(db.Integer)
     exang = db.Column(db.String(2))
     oldpeak = db.Column(db.Float(3))
-
+    slope = db.Column(db.String(3))
+    ca = db.Column(db.String(5))
+    thal = db.Column(db.String(4))
+    outcome = db.Column(db.String(10000))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
 
 
 class User(db.Model, UserMixin):
