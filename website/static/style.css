@@ -140,8 +140,8 @@ section p{
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        /* opacity: 1;
-        visibility: visible; */
+        opacity: 1;
+        visibility: visible;
     }
     header.sticky nav ul{
         opacity: 1;
