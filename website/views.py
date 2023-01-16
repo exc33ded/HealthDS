@@ -122,6 +122,7 @@ def heart():
                         user_id=current_user.id)
         db.session.add(new_data)
         db.session.commit()
+
         return render_template('heart_pred.html', prediction_text=senddata)
 
 @views.route("/heart_history")

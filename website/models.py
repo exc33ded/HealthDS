@@ -34,7 +34,7 @@ class Heart(db.Model):
     ca = db.Column(db.String(5))
     thal = db.Column(db.String(4))
     outcome = db.Column(db.String(10000))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class User(db.Model, UserMixin):
@@ -43,3 +43,4 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     diabetes = db.relationship('Diabetes') # Add the id of different Notes (capatilize table letter required)
+    heart = db.relationship('Heart')

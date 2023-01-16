@@ -2,5 +2,45 @@
 
 <table style="border:1px solid black;
 width: 100%;">
-    
+
+    <tr>
+    <th>Date</th>
+    <th>Age</th>
+    <th>Sex</th>
+    <th>C.P</th>
+    <th>Trestbps</th>
+    <th>Chol</th>
+    <th>Fbs</th>
+    <th>Restecg</th>
+    <th>Thalach</th>
+    <th>exang</th>
+    <th>Oldpeak</th>
+    <th>Slope</th>
+    <th>C.A</th>
+    <th>Thal</th>
+    <th>Outcome</th>
+    </tr>
+
+    {% for heart in user.heart %}
+    <tr>
+
+        <td>{{ heart.date }}</td>
+        <td>{{ heart.age }}</td>
+        <td>{{ heart.sex }}</td>
+        <td>{{ heart.cp }}</td>
+        <td>{{ heart.trestbps }}</td>
+        <td>{{ heart.chol }}</td>
+        <td>{{ heart.fbs }}</td>
+        <td>{{ heart.restecg }}</td>
+        <td>{{ heart.thalach }}</td>
+        <td>{{ heart.exang }}</td>
+        <td>{{ heart.oldpeak }}</td>
+        <td>{{ heart.slope }}</td>
+        <td>{{ heart.ca }}</td>
+        <td>{{ heart.thal }}</td>
+        <td>{{ heart.outcome }}</td>
+    </tr>  
+
+        {% endfor %}
 </table>
+
