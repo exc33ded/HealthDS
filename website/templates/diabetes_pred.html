@@ -1,6 +1,5 @@
 {% include "nav(logged).html" %}
 <!DOCTYPE html>
-<html>
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
 <head>
 
@@ -14,6 +13,7 @@
 </head>
 
 <body bgcolor="cyan">
+  {{ message }}
 	<h1>Diabates Prediction</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
@@ -32,7 +32,6 @@
    <br>
    <br>
    {{ prediction_text }}<br>
-<a href="/home">GO BACK</a>
   <br>
 
 </body>
