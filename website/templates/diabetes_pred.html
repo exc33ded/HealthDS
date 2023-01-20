@@ -1,4 +1,18 @@
 {% include "nav(logged).html" %}
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger after-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" area-label="Close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %} 
+
 <!DOCTYPE html>
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
 <head>

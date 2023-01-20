@@ -34,7 +34,8 @@ def diabetes():
 
         if (Pregnancies < 0):
             mess = 'Pregnancy cannot be negative'
-            return render_template('diabetes_pred.html', message=mess)
+            flash(message=mess)
+            return render_template('diabetes_pred.html')
         else:
             model1 = pickle.load(open('model/diabetes_final_model.pkl','rb'))
             input_data = (Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age)
