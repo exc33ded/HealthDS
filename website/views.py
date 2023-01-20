@@ -36,6 +36,12 @@ def diabetes():
             mess = 'Pregnancy cannot be negative'
             flash(message=mess)
             return render_template('diabetes_pred.html')
+
+        elif (Pregnancies != int(Pregnancies)) or (Pregnancies != float(Pregnancies)):
+            mess = 'Please enter numeric value only'
+            flash(message=mess)
+            return render_template('diabetes_pred.html')
+            
         else:
             model1 = pickle.load(open('model/diabetes_final_model.pkl','rb'))
             input_data = (Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age)
@@ -64,7 +70,7 @@ def diabetes():
                 db.session.add(new_data)
                 db.session.commit()
 
-                return render_template('diabetes_pred.html', prediction_text=senddata)
+            return render_template('diabetes_pred.html', prediction_text=senddata)
 
 @views.route("/diabetes_history")
 @login_required
