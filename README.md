@@ -12,6 +12,7 @@ Here're some of the project's best features:
 *   Account Creation
 *   Maintainence
 *   Multiple Disease Prediction
+*   Record Storing
 *   Web Based
 
 <h2>🛠️ Installation Steps:</h2>
