@@ -32,8 +32,8 @@ def diabetes():
         DiabetesPedigreeFunction = float(request.form['DiabetesPedigreeFunction'])
         Age = int(request.form['Age'])
 
-        if (Pregnancies < 0):
-            mess = 'Pregnancy cannot be negative'
+        if (Pregnancies < 0) or (Glucose < 0) or (BloodPressure < 0) or (SkinThickness < 0) or (Insulin < 0) or (BMI < 0) or (DiabetesPedigreeFunction < 0) or (Age < 0):
+            mess = 'Value cannot be negative'
             flash(message=mess)
             return render_template('diabetes_pred.html')
 
