@@ -37,11 +37,6 @@ def diabetes():
             flash(message=mess)
             return render_template('diabetes_pred.html')
 
-        elif (Pregnancies != int(Pregnancies)) or (Pregnancies != float(Pregnancies)):
-            mess = 'Please enter numeric value only'
-            flash(message=mess)
-            return render_template('diabetes_pred.html')
-            
         else:
             model1 = pickle.load(open('model/diabetes_final_model.pkl','rb'))
             input_data = (Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age)
