@@ -1,0 +1,68 @@
+{% include 'nav(logged).html' %}
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger after-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close float-right" area-label="Close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %} 
+
+<h1>Breast Cancer Prediction</h1>
+
+<form action="" method="post">
+    <label for="">Radius Mean : </label>
+    <input type="text" name="radius_mean" id="radius_mean"><br>
+
+    <label for="">Texture Mean : </label>
+    <input type="text" name="texture_mean" id="textture_mean"><br>
+
+    <label for="">Perimeter Mean : </label>
+    <input type="text" name="perimeter_mean" id="perimeter_mean"><br>
+
+    <label for="">Area Mean : </label>
+    <input type="text" name="area_mean" id="area_mean"><br>
+
+    <label for="">Smoothness Mean : </label>
+    <input type="text" name="smoothness_mean" id="smoothness_mean"><br>
+
+    <label for="">Copactness Mean : </label>
+    <input type="text" name="compactness_mean" id="compactness_mean"><br>
+
+    <label for="">Cancavity Mean : </label>
+    <input type="text" name="concavity_mean" id="concavity_mean"><br>
+
+    <label for="">Concave Points Mean : </label>
+    <input type="text" name="concave_points_mean" id="concave_points_mean"><br>
+
+    <label for="">Symmetry Mean : </label>
+    <input type="text" name="symmetry_mean" id="symmetry_mean"><br>
+
+    <label for="">Fractal Dimension Mean : </label>
+    <input type="text" name="fractal_dimension_mean" id="fractal_dimension_mean"><br>
+
+    <label for="">Radius se : </label>
+    <input type="text" name="radius_se" id="radius_se"><br>
+
+    <label for="">Texture se : </label>
+    <input type="text" name="texture_se" id="texture_se"><br>
+
+    <label for="">Perimeter se : </label>
+    <input type="text" name="perimeter_se" id="perimeter_se"><br>
+
+    <label for="">Area se : </label>
+    <input type="text" name="area_se" id="area_se"><br>
+
+    <label for="">Smoothness se : </label>
+    <input type="text" name="smoothness_se" id="smoothness_se"><br>
+
+    <label for="">Compactness se : </label>
+    <input type="text" name="compactness_se" id="compactness_se"><br>
+
+    
+</form>
