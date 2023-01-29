@@ -36,6 +36,12 @@ class Heart(db.Model):
     outcome = db.Column(db.String(10000))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+class BCancer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    
+    outcome = db.Column(db.String(10000))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,3 +50,4 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     diabetes = db.relationship('Diabetes') # Add the id of different Notes (capatilize table letter required)
     heart = db.relationship('Heart')
+    bcancer = db.relationship('BCancer')
