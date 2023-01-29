@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, flash, request, jsonify
 from flask_login import login_required, current_user
-from .models import Diabetes, User, Heart
+from .models import Diabetes, User, Heart, BCancer
 from . import db
 import pickle
 import pandas as pd
