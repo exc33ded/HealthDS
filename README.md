@@ -1,6 +1,6 @@
 <h1 align="center" id="title">Health Dicernment System</h1>
 
-<p id="description">A web based system that will help in predicting multiple diseases in accordance to the data inserted by the user which in result will help in predicting if a person is suffering from diseases or not.</p>
+<p id="description">A web based system made with the help of Machine Learning and Deep Learning that will help in predicting multiple diseases in accordance to the data inserted by the user which in result will help in predicting if a person is suffering from diseases or not.</p>
 
   
   
