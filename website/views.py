@@ -32,40 +32,35 @@ def diabetes():
         DiabetesPedigreeFunction = float(request.form['DiabetesPedigreeFunction'])
         Age = int(request.form['Age'])
 
-        if (Pregnancies < 0) or (Glucose < 0) or (BloodPressure < 0) or (SkinThickness < 0) or (Insulin < 0) or (BMI < 0) or (DiabetesPedigreeFunction < 0) or (Age < 0):
-            mess = 'Value cannot be negative'
-            flash(message=mess)
-            return render_template('diabetes_pred.html')
-
+        model1 = pickle.load(open('model/diabetes_final_model.pkl','rb'))
+        input_data = (Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age)
+        input_data_as_numpy_array= np.asarray(input_data)
+        input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+        print(input_data_reshaped)
+        prediction = model1.predict(input_data_reshaped)
+        senddata=""
+        predi = ""
+        if (prediction[0]== 0):
+            senddata='According to the given details person does not have Diabetes'
+            predi = "Not Diabetic"
         else:
-            model1 = pickle.load(open('model/diabetes_final_model.pkl','rb'))
-            input_data = (Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age)
-            input_data_as_numpy_array= np.asarray(input_data)
-            input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
-            print(input_data_reshaped)
-            prediction = model1.predict(input_data_reshaped)
-            senddata=""
-            predi = ""
-            if (prediction[0]== 0):
-                senddata='According to the given details person does not have Diabetes'
-                predi = "Not Diabetic"
-            else:
-                senddata='According to the given details chances of having Diabetes are High, So Please Consult a Doctor'
-                predi = "Diabetic"
-                new_data = Diabetes(pregnancies=Pregnancies, 
-                                    glucose=Glucose,
-                                    bloodpressure=BloodPressure,
-                                    skinthichness=SkinThickness,
-                                    insulin=Insulin,
-                                    bmi=BMI,
-                                    dpf=DiabetesPedigreeFunction,
-                                    age=Age,
-                                    outcome=predi,
-                                    user_id=current_user.id)
-                db.session.add(new_data)
-                db.session.commit()
+            senddata='According to the given details chances of having Diabetes are High, So Please Consult a Doctor'
+            predi = "Diabetic"
+            
+        new_data = Diabetes(pregnancies=Pregnancies, 
+                                glucose=Glucose,
+                                bloodpressure=BloodPressure,
+                                skinthichness=SkinThickness,
+                                insulin=Insulin,
+                                bmi=BMI,
+                                dpf=DiabetesPedigreeFunction,
+                                age=Age,
+                                outcome=predi,
+                                user_id=current_user.id)
+        db.session.add(new_data)
+        db.session.commit()
 
-            return render_template('diabetes_pred.html', prediction_text=senddata)
+        return render_template('diabetes_pred.html', prediction_text=senddata)
 
 @views.route("/diabetes_history")
 @login_required
