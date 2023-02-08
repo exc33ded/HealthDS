@@ -185,8 +185,6 @@ def bcancer():
         input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
         print(input_data_reshaped)
 
-        
-
         prediction = model_bcancer.predict(input_data_reshaped)
         senddata=""
         if (prediction[0] == 0):
@@ -197,3 +195,8 @@ def bcancer():
             senddata='According to the given details the chance of Malignant is '
 
         return render_template('cancer_pred.html', prediction_text=senddata)
+
+@views.route('/bcancer_history')
+@login_required
+def bcancer_history():
+    return render_template('cancer_history.html', user=current_user)

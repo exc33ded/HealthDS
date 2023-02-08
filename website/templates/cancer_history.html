@@ -159,23 +159,50 @@ h3:after {
     <body>
         <div class="container">
 <h1>Breast Cancer History</h1>
-  <table class="rwd-table">
+  <table id="dtDynamicVerticalScrollExample" class="rwd-table table table-striped table-bordered table-sm" cellspacing="0"
+  width="100%">
     <tbody>
       <tr>
-        <th>Supplier Code</th>
-        <th>Supplier Name</th>
-        <th>Invoice Number</th>
-        <th>Invoice Date</th>
-        <th>Due Date</th>
-        <th>Net Amount</th>
+        <th>Radius Mean</th>
+        <th>Texture Mean</th>
+        <th>Perimeter Mean</th>
+        <th>Area Mean</th>
+        <th>Smoothness Mean</th>
+        <th>Compactness Mean</th>
+        <th>Concavity Mean</th>
+        <th>Concave Points Mean</th>
+        <th>Symmetry Mean</th>
+        <th>Fractal Dimension Mean</th>
+        <th>Output<th>
       </tr>
       {% for bcancer in user.bcancer %}
       <tr>
-        <th></th>
+        <th>{{ bcancer.radius_mean }}</th>
+        <th>{{ bcancer.texture_mean }}</th>
+        <th>{{ bcancer.perimeter_mean }}</th>
+        <th>{{ bcancer.area_mean }}</th>
+        <th>{{ bcancer.smoothness_mean }}</th>
+        <th>{{ bcancer.compactness_mean }}</th>
+        <th>{{ bcancer.concavity_mean }}</th>
+        <th>{{ bcancer.concave_points_mean }}</th>
+        <th>{{ bcancer.symmetry_mean }}</th>
+        <th>{{ bcancer.fractal_dimension_mean }}</th>
+        <th>{{ bcancer.output }}</th>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
+  <br><br>
   <h3>Output</h3>
 </div>
     </body>
+    <script>
+      $(document).ready(function () {
+        $('#dtDynamicVerticalScrollExample').DataTable({
+          "scrollY": "50vh",
+          "scrollCollapse": true,
+        });
+        $('.dataTables_length').addClass('bs-select');
+      });
+    </script>
 </head>
