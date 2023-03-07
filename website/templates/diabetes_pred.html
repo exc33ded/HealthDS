@@ -1,19 +1,8 @@
 {% include "nav(logged).html" %}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-danger after-dismissible fade show" role="alert">
-  {{ message }}
-  <button type="button" class="btn-close float-right" area-label="Close" data-dismiss="alert">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
 
 <head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
   <style>
     @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
 
@@ -211,23 +200,27 @@
   <h1>Diabates Prediction</h1>
 
   <!-- Main Input For Receiving Query to our ML -->
-  <form action="{{ url_for('views.diabetes')}}" method="post">
-    <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" />
-    <input type="text" name="Glucose" placeholder="Glucose Level" required="required" />
-    <input type="text" name="BloodPressure" placeholder="Blood Pressure Level" required="required" />
-    <input type="text" name="SkinThickness" placeholder="Skin Thickness" required="required" />
-    <input type="text" name="Insulin" placeholder="Insulin Level" required="required" />
-    <input type="text" name="BMI" placeholder="Body Mass Index" required="required" />
-    <input type="text" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required="required">
-    <input type="text" name="Age" placeholder="Enter Age" required="required">
-    <button type="submit">Predict</button>
-  </form>
+  <div class="w3-container">
+    <form action="{{ url_for('views.diabetes')}}" method="post">
+      <input type="text" class="w3-input" name="Pregnancies" placeholder="Pregnancies" required="required" />
+      <input type="text" class="w3-input" name="Glucose" placeholder="Glucose Level" required="required" />
+      <input type="text" class="w3-input" name="BloodPressure" placeholder="Blood Pressure Level" required="required" />
+      <input type="text" class="w3-input" name="SkinThickness" placeholder="Skin Thickness" required="required" />
+      <input type="text" class="w3-input" name="Insulin" placeholder="Insulin Level" required="required" />
+      <input type="text" class="w3-input" name="BMI" placeholder="Body Mass Index" required="required" />
+      <input type="text" class="w3-input" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required="required">
+      <input type="text" class="w3-input" name="Age" placeholder="Enter Age" required="required"><br>
+      <button type="submit" class="w3-border-red w3-round-large w3-center w3-indigo w3-button w3-btn w3-animate-bottom">Predict</button>
+    </form>
+  </div>
 
   <br>
-  <div class="container">
+  <div class="container w3-text-white">
     <h3>Output</h3>
     <br>
-    {{ prediction_text }}<br>
+    <h2>
+      {{ prediction_text }}<br>
+    </h2>
     <br>
   </div>
 </body>
