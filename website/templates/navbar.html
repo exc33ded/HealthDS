@@ -7,34 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-   
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/w3.css') }}"> -->
+   <style>
+    #lefty{
+        text-align: left;
+    }
+   </style>
 </head>
 
 <body>
     <div class="body">
         <header>
-            <img src="hds.jfif" alt="" class="banner">
-            <a href="#" class="logo">HDS</a>
+            <img src="{{ url_for('static', filename='css/hds.png') }}" alt="" class="banner">
+            <!-- <a href="#" class="logo">HDS</a> -->
             <div class="toggle"></div>
             <nav>
                 <ul>
+                    <li><a id="lefty" href="">HDS</a></li>  
+                </ul>
+                <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="{{url_for('auth.login')}}">Register</a></li>
-                    
+                    <li><a href="{{url_for('auth.login')}}">Login</a></li>
+                    <li><a href="{{url_for('auth.sign_up')}}">Register</a></li>
                 </ul>
             </nav>
         </header>
-        <section>
-            <h2>Home page begins here</h2>
-            <p> ipsum dolor sit amet consectetur adipisicing elit. Nulla quas rerum officiis tenetur expedita odit
-                molestias quod temporibus eius? Ex unde itaque maiores eaque sit ab accusantium ratione consectetur fuga
-                culpa? Illum unde consectetur impedit incidunt. Quisquam voluptas ullam nobis. Reprehenderit eum tenetur
-                deserunt tempora adipisci, culpa ullam ipsum nostrum pariatur molestias, possimus ipsam blanditiis, a
-                obcaecati autem! Nulla id hic facilis officiis perspiciatis blanditiis accusantium quod sequi optio sunt
-                omnis eius, minima fuga officia eaque ipsum, quam soluta illo porro quae aperiam aut rem. Dolorem
-                commodi explicabo velit nostrum quod, illum corporis pariatur fuga architecto, totam sint eligendi quos?
-            </p>
-        </section>
         <script>
             window.addEventListener("scroll", function () {
                 const header = document.querySelector('header');
