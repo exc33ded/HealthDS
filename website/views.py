@@ -194,6 +194,24 @@ def bcancer():
             predi = "Malignant"
             senddata='According to the given details the chance of Malignant is '
 
+        # new_data = BCancer(age=age,
+        #                 sex=sex,
+        #                 cp=cp,
+        #                 trestbps=trestbps,
+        #                 chol=chol,
+        #                 fbs=fbs,
+        #                 restecg=restecg,
+        #                 thalach=thalach,
+        #                 exang=exang,
+        #                 oldpeak=oldpeak,
+        #                 slope=slope,
+        #                 ca=ca,
+        #                 thal=thal,
+        #                 outcome=predi,
+        #                 user_id=current_user.id)
+        # db.session.add(new_data)
+        # db.session.commit()
+
         return render_template('cancer_pred.html', prediction_text=senddata)
 
 @views.route('/bcancer_history')
