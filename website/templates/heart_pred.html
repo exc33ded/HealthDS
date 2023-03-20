@@ -1,61 +1,285 @@
-{% include 'nav(logged).html' %}
+{% include "nav(logged).html" %}
 
-<form action="{{ url_for('views.heart') }}" method="POST">
-    <label for="age">Age : </label>
-    <input type="text" id="age" name="age">
-    <br>
 
-    <label for="sex">Sex(1:Male,0:Female) : </label>
-    <select name="sex" id="sex">
-        <option value="1">Male</option>
-        <option value="0">Female</option>
-    </select>
-    <br>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
 
-    <label for="chest pain type">Chest pain type : </label>
-    <input type="text" id="cp" name="cp">
-    <br>
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
 
-    <label for="resting blood pressure">Resting Blood Pressure : </label>
-    <input type="text" id="trestbps" name="trestbps">
-    <br>
+        .rwd-table {
+            margin: auto;
+            min-width: 300px;
+            max-width: 100%;
+            border-collapse: collapse;
+        }
 
-    <label for="serum cholestoral in mg/dl">Serum cholestoral in mg/dl : </label>
-    <input type="text" id="chol" name="chol">
-    <br>
+        .rwd-table tr:first-child {
+            border-top: none;
+            background: #428bca;
+            color: #fff;
+        }
 
-    <label for="fasting blood pressure">Fasting Blood Pressure : </label>
-    <input type="text" id="fbs" name="fbs">
-    <br>
+        .rwd-table tr {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            background-color: #f5f9fc;
+        }
 
-    <label for="restecg">Resting Electrocardiographic Result : </label>
-    <input type="text" id="restecg" name="restecg">
-    <br>
+        .rwd-table tr:nth-child(odd):not(:first-child) {
+            background-color: #ebf3f9;
+        }
 
-    <label for="thalach">Maximum Heart Rate Achieved : </label>
-    <input type="text" id="thalach" name="thalach">
-    <br>
+        .rwd-table th {
+            display: none;
+        }
 
-    <label for="exang">Exercise Induced Angina : </label>
-    <input type="text" id="exang" name="exang">
-    <br>
+        .rwd-table td {
+            display: block;
+        }
 
-    <label for="oldpeak">Oldpeak : </label>
-    <input type="text" id="oldpeak" name="oldpeak">
-    <br>
+        .rwd-table td:first-child {
+            margin-top: .5em;
+        }
 
-    <label for="slope">Slope of Peak: </label>
-    <input type="text" id="slope" name="slope">
-    <br>
+        .rwd-table td:last-child {
+            margin-bottom: .5em;
+        }
 
-    <label for="ca">Number of Major Vessels : </label>
-    <input type="text" id="ca" name="ca">
-    <br>
+        .rwd-table td:before {
+            content: attr(data-th) ": ";
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+            color: #000;
+        }
 
-    <label for="thal">Thal : </label>
-    <input type="text" id="thal" name="thal">
-    <br>
-    <br>
-    <input type="submit" value="Submit"><br><br>
+        .rwd-table th,
+        .rwd-table td {
+            text-align: left;
+        }
 
-    {{ prediction_text }}<br>
+        .rwd-table {
+            color: #333;
+            border-radius: .4em;
+            overflow: hidden;
+        }
+
+        .rwd-table tr {
+            border-color: #bfbfbf;
+        }
+
+        .rwd-table th,
+        .rwd-table td {
+            padding: .5em 1em;
+        }
+
+        @media screen and (max-width: 601px) {
+            .rwd-table tr:nth-child(2) {
+                border-top: none;
+            }
+        }
+
+        @media screen and (min-width: 600px) {
+            .rwd-table tr:hover:not(:first-child) {
+                background-color: #d8e7f3;
+            }
+
+            .rwd-table td:before {
+                display: none;
+            }
+
+            .rwd-table th,
+            .rwd-table td {
+                display: table-cell;
+                padding: .25em .5em;
+            }
+
+            .rwd-table th:first-child,
+            .rwd-table td:first-child {
+                padding-left: 0;
+            }
+
+            .rwd-table th:last-child,
+            .rwd-table td:last-child {
+                padding-right: 0;
+            }
+
+            .rwd-table th,
+            .rwd-table td {
+                padding: 1em !important;
+            }
+        }
+
+
+        /* THE END OF THE IMPORTANT STUFF */
+
+        /* Basic Styling */
+        body {
+            background: #4B79A1;
+            background: -webkit-linear-gradient(to left, #4B79A1, #283E51);
+            background: linear-gradient(to left, #4B79A1, #283E51);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.4em;
+            color: #f2f2f2;
+        }
+
+        .container {
+            display: block;
+            text-align: center;
+        }
+
+        h3 {
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            font-size: 1.5em;
+            color: #cecece;
+        }
+
+        h3:before {
+            content: "\25C0";
+            position: absolute;
+            left: -50px;
+            -webkit-animation: leftRight 2s linear infinite;
+            animation: leftRight 2s linear infinite;
+        }
+
+        h3:after {
+            content: "\25b6";
+            position: absolute;
+            right: -50px;
+            -webkit-animation: leftRight 2s linear infinite reverse;
+            animation: leftRight 2s linear infinite reverse;
+        }
+
+        @-webkit-keyframes leftRight {
+            0% {
+                -webkit-transform: translateX(0)
+            }
+
+            25% {
+                -webkit-transform: translateX(-10px)
+            }
+
+            75% {
+                -webkit-transform: translateX(10px)
+            }
+
+            100% {
+                -webkit-transform: translateX(0)
+            }
+        }
+
+        @keyframes leftRight {
+            0% {
+                transform: translateX(0)
+            }
+
+            25% {
+                transform: translateX(-10px)
+            }
+
+            75% {
+                transform: translateX(10px)
+            }
+
+            100% {
+                transform: translateX(0)
+            }
+        }
+    </style>
+
+<body>
+    <h1>Heart Prediction</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <div class="w3-container">
+        <form action="{{ url_for('views.heart') }}" method="POST">
+
+            <label class="w3-text-white" for="age">Age : </label>
+            <input class="w3-input" type="text" id="age" name="age">
+            <br>
+
+            <label class="w3-text-white" for="sex">Sex : </label>
+            <select name="sex" id="sex" class="w3-select">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+            <br>
+            <br>
+            <label class="w3-text-white" for="chest pain type">Chest pain type : </label>
+            <input class="w3-input" type="text" id="cp" name="cp">
+            <br>
+
+            <label class="w3-text-white" or="resting blood pressure">Resting Blood Pressure : </label>
+            <input class="w3-input" type="text" id="trestbps" name="trestbps">
+            <br>
+
+            <label class="w3-text-white" for="serum cholestoral in mg/dl">Serum cholestoral in mg/dl : </label>
+            <input class="w3-input" type="text" id="chol" name="chol">
+            <br>
+
+            <label class="w3-text-white" for="fasting blood pressure">Fasting Blood Pressure : </label>
+            <input class="w3-input" type="text" id="fbs" name="fbs">
+            <br>
+
+            <label class="w3-text-white" for="restecg">Resting Electrocardiographic Result : </label>
+            <input class="w3-input" type="text" id="restecg" name="restecg">
+            <br>
+
+            <label class="w3-text-white" for="thalach">Maximum Heart Rate Achieved : </label>
+            <input class="w3-input" type="text" id="thalach" name="thalach">
+            <br>
+
+            <label class="w3-text-white" for="exang">Exercise Induced Angina : </label>
+            <input class="w3-input" type="text" id="exang" name="exang">
+            <br>
+
+            <label class="w3-text-white" for="oldpeak">Oldpeak : </label>
+            <input class="w3-input" type="text" id="oldpeak" name="oldpeak">
+            <br>
+
+            <label class="w3-text-white" for="slope">Slope of Peak: </label>
+            <input class="w3-input" type="text" id="slope" name="slope">
+            <br>
+
+            <label class="w3-text-white" for="ca">Number of Major Vessels : </label>
+            <input class="w3-input" type="text" id="ca" name="ca">
+            <br>
+
+            <label class="w3-text-white" for="thal">Thal : </label>
+            <input class="w3-input" type="text" id="thal" name="thal">
+            <br>
+            <input class="w3-border-red w3-round-large w3-center w3-indigo w3-button w3-btn w3-animate-bottom"
+                type="submit" value="Predict"><br><br>
+    </div>
+    </form>
+    </div>
+
+    <br>
+    <div class="container w3-text-white">
+        <h3>Output</h3>
+        <br>
+        <h2>
+            {{ prediction_text }}<br>
+        </h2>
+        <br>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $('#dtDynamicVerticalScrollExample').DataTable({
+            "scrollY": "50vh",
+            "scrollCollapse": true,
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+</head>

@@ -156,10 +156,19 @@ h3:after {
 }
 
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css"></script>
+    <script src="cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#myTable').DataTable();
+      });
+    </script>
+    </head>
     <body>
         <div class="container">
 <h1>Diabetes History</h1>
-  <table id="dtDynamicVerticalScrollExample" class="rwd-table table table-striped table-bordered table-sm" cellspacing="0"
+  <table id="myTable" class="table rwd-table table table-striped table-bordered table-sm" cellspacing="0"
   width="100%">
     <tbody>
         <tr>
@@ -203,4 +212,3 @@ h3:after {
         $('.dataTables_length').addClass('bs-select');
       });
     </script>
-</head>
