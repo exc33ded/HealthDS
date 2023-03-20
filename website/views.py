@@ -194,23 +194,20 @@ def bcancer():
             predi = "Malignant"
             senddata='According to the given details the chance of Malignant is '
 
-        # new_data = BCancer(age=age,
-        #                 sex=sex,
-        #                 cp=cp,
-        #                 trestbps=trestbps,
-        #                 chol=chol,
-        #                 fbs=fbs,
-        #                 restecg=restecg,
-        #                 thalach=thalach,
-        #                 exang=exang,
-        #                 oldpeak=oldpeak,
-        #                 slope=slope,
-        #                 ca=ca,
-        #                 thal=thal,
-        #                 outcome=predi,
-        #                 user_id=current_user.id)
-        # db.session.add(new_data)
-        # db.session.commit()
+        new_data = BCancer(radius_mean=radius_mean,
+                        texture_mean=texture_mean, 
+                        perimeter_mean=perimeter_mean,
+                        area_mean=area_mean,
+                        smoothness_mean=smoothness_mean,
+                        compactness_mean=compactness_mean, 
+                        concavity_mean=concavity_mean,
+                        concave_points_mean=concave_points_mean, 
+                        symmetry_mean=symmetry_mean, 
+                        fractal_dimension_mean=fractal_dimension_mean,
+                        outcome=predi,
+                        user_id=current_user.id)
+        db.session.add(new_data)
+        db.session.commit()
 
         return render_template('cancer_pred.html', prediction_text=senddata)
 

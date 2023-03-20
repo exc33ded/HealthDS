@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Atom Material Theme",
+    "workbench.colorTheme": "Solarized Dark",
     "workbench.preferredDarkColorTheme": "Default Dark+",
     "task.allowAutomaticTasks": "on",
     "workbench.editorAssociations": {

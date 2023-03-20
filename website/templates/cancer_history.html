@@ -163,6 +163,7 @@ h3:after {
   width="100%">
     <tbody>
       <tr>
+        <th>Date</th>
         <th>Radius Mean</th>
         <th>Texture Mean</th>
         <th>Perimeter Mean</th>
@@ -177,6 +178,7 @@ h3:after {
       </tr>
       {% for bcancer in user.bcancer %}
       <tr>
+        <th>{{ bcancer.date }}</th>
         <th>{{ bcancer.radius_mean }}</th>
         <th>{{ bcancer.texture_mean }}</th>
         <th>{{ bcancer.perimeter_mean }}</th>
