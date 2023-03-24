@@ -88,6 +88,11 @@ def heart():
         ca = int(request.form['ca'])
         thal= int(request.form['thal'])
 
+        if sex == 1:
+            gender="Male"
+        else:
+            gender="Female"
+
         model_heart = pickle.load(open('model/heart_final_model.pkl', 'rb'))
         input_data = (age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal)
 
@@ -107,7 +112,7 @@ def heart():
             senddata='According to the given details chances of having Heart Diesease are High, So Please Consult a Doctor'
 
         new_data = Heart(age=age,
-                        sex=sex,
+                        sex=gender,
                         cp=cp,
                         trestbps=trestbps,
                         chol=chol,
@@ -216,10 +221,15 @@ def bcancer():
 def bcancer_history():
     return render_template('cancer_history.html', user=current_user)
 
-@views.route('/liver')
+@views.route('/liver', methods=['GET', 'POST'])
 @login_required
 def liver():
-    return render_template('liver_pred.html')
+    if request.method == "GET":
+        return render_template('liver_pred.html')
+    else:
+        Age = int(request.form['Age'])
+        Gender
+        return render_template('cancer_pred.html', prediction_text=senddata)
 
 @views.route('/liver_history')
 @login_required
