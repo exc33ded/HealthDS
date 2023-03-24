@@ -52,6 +52,22 @@ class BCancer(db.Model):
     outcome = db.Column(db.String(10000))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+class Liver(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    Age = db.Column(db.Integer)
+    sex = db.Column(db.String(8))
+    Total_Bilirubin = db.Column(db.Float(100))
+    Direct_Bilirubin = db.Column(db.Float(100))
+    Alkaline_Phosphotase = db.Column(db.Integer)
+    Alamine_Aminotransferase = db.Column(db.Integer)
+    Aspartate_Aminotransferase = db.Column(db.Integer)
+    Total_Protiens = db.Column(db.Float(100))
+    Albumin = db.Column(db.Float(100))
+    Albumin_and_Globulin_Ratio = db.Column(db.Float(100))
+    outcome = db.Column(db.String(10))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
@@ -60,3 +76,4 @@ class User(db.Model, UserMixin):
     diabetes = db.relationship('Diabetes') # Add the id of different Notes (capatilize table letter required)
     heart = db.relationship('Heart')
     bcancer = db.relationship('BCancer')
+    liver = db.relationship('Liver')

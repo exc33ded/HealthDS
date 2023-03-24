@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, flash, request, jsonify
 from flask_login import login_required, current_user
-from .models import Diabetes, User, Heart, BCancer
+from .models import Diabetes, User, Heart, BCancer, Liver
 from . import db
 import pickle
 import pandas as pd
@@ -228,10 +228,53 @@ def liver():
         return render_template('liver_pred.html')
     else:
         Age = int(request.form['Age'])
-        Gender
-        return render_template('cancer_pred.html', prediction_text=senddata)
+        sex = int(request.form['sex'])
+        Total_Bilirubin = float(request.form['Total_Bilirubin'])
+        Direct_Bilirubin = float(request.form['Direct_Bilirubin'])
+        Alkaline_Phosphotase = int(request.form['Alkaline_Phosphotase'])
+        Alamine_Aminotransferase = int(request.form['Alamine_Aminotransferase'])
+        Aspartate_Aminotransferase = int(request.form['Aspartate_Aminotransferase'])
+        Total_Protiens = float(request.form['Total_Protiens'])
+        Albumin = float(request.form['Albumin'])
+        Albumin_and_Globulin_Ratio = float(request.form['Albumin_and_Globulin_Ratio'])
+
+        if sex == 1:
+            gender="Male"
+        else:
+            gender="Female"
+
+        model_liver = pickle.load(open('model/liver_final_model.pkl', 'rb'))
+        input_data = (Age, sex, Total_Bilirubin, Direct_Bilirubin, Alkaline_Phosphotase, Alamine_Aminotransferase, Aspartate_Aminotransferase,
+                        Total_Protiens, Albumin, Albumin_and_Globulin_Ratio)
+
+        print(input_data)
+
+        input_data_as_numpy_array= np.asarray(input_data)
+        input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+        print(input_data_reshaped)
+
+        prediction = model_liver.predict(input_data_reshaped)
+        print(prediction)
+        senddata=""
+        if (prediction[0]==2):
+            predi="No Liver Disease"
+            senddata='According to the given details person does not have any Liver Diesease.'
+        else:
+            predi="Liver Disease"
+            senddata='According to the given details chances of having Liver Diesease are High, So Please Consult a Doctor'
+
+        new_data = Liver(Age=Age, sex=gender, Total_Bilirubin=Total_Bilirubin, Direct_Bilirubin=Direct_Bilirubin,
+                 Alkaline_Phosphotase=Alkaline_Phosphotase, Alamine_Aminotransferase=Alamine_Aminotransferase,
+                  Aspartate_Aminotransferase=Aspartate_Aminotransferase,
+                    Total_Protiens=Total_Protiens, Albumin=Albumin, Albumin_and_Globulin_Ratio=Albumin_and_Globulin_Ratio,
+                        outcome=predi,
+                        user_id=current_user.id)
+        db.session.add(new_data)
+        db.session.commit()
+
+        return render_template('liver_pred.html', prediction_text=senddata)
 
 @views.route('/liver_history')
 @login_required
 def liver_history():
-    return render_template('liver_history.html')
+    return render_template('liver_history.html', user=current_user)
