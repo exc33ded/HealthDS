@@ -13,104 +13,287 @@
    {% endif %}
 {% endwith %} 
 
+<html>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+    <style>
+      @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
+  
+      * {
+        font-family: 'Open Sans', sans-serif;
+      }
+  
+      .rwd-table {
+        margin: auto;
+        min-width: 300px;
+        max-width: 100%;
+        border-collapse: collapse;
+      }
+  
+      .rwd-table tr:first-child {
+        border-top: none;
+        background: #428bca;
+        color: #fff;
+      }
+  
+      .rwd-table tr {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        background-color: #f5f9fc;
+      }
+  
+      .rwd-table tr:nth-child(odd):not(:first-child) {
+        background-color: #ebf3f9;
+      }
+  
+      .rwd-table th {
+        display: none;
+      }
+  
+      .rwd-table td {
+        display: block;
+      }
+  
+      .rwd-table td:first-child {
+        margin-top: .5em;
+      }
+  
+      .rwd-table td:last-child {
+        margin-bottom: .5em;
+      }
+  
+      .rwd-table td:before {
+        content: attr(data-th) ": ";
+        font-weight: bold;
+        width: 120px;
+        display: inline-block;
+        color: #000;
+      }
+  
+      .rwd-table th,
+      .rwd-table td {
+        text-align: left;
+      }
+  
+      .rwd-table {
+        color: #333;
+        border-radius: .4em;
+        overflow: hidden;
+      }
+  
+      .rwd-table tr {
+        border-color: #bfbfbf;
+      }
+  
+      .rwd-table th,
+      .rwd-table td {
+        padding: .5em 1em;
+      }
+  
+      @media screen and (max-width: 601px) {
+        .rwd-table tr:nth-child(2) {
+          border-top: none;
+        }
+      }
+  
+      @media screen and (min-width: 600px) {
+        .rwd-table tr:hover:not(:first-child) {
+          background-color: #d8e7f3;
+        }
+  
+        .rwd-table td:before {
+          display: none;
+        }
+  
+        .rwd-table th,
+        .rwd-table td {
+          display: table-cell;
+          padding: .25em .5em;
+        }
+  
+        .rwd-table th:first-child,
+        .rwd-table td:first-child {
+          padding-left: 0;
+        }
+  
+        .rwd-table th:last-child,
+        .rwd-table td:last-child {
+          padding-right: 0;
+        }
+  
+        .rwd-table th,
+        .rwd-table td {
+          padding: 1em !important;
+        }
+      }
+  
+  
+      /* THE END OF THE IMPORTANT STUFF */
+  
+      /* Basic Styling */
+      body {
+        background: #4B79A1;
+        background: -webkit-linear-gradient(to left, #4B79A1, #283E51);
+        background: linear-gradient(to left, #4B79A1, #283E51);
+      }
+  
+      h1 {
+        text-align: center;
+        font-size: 2.4em;
+        color: #f2f2f2;
+      }
+  
+      .container {
+        display: block;
+        text-align: center;
+      }
+  
+      h3 {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        font-size: 1.5em;
+        color: #cecece;
+      }
+  
+      h3:before {
+        content: "\25C0";
+        position: absolute;
+        left: -50px;
+        -webkit-animation: leftRight 2s linear infinite;
+        animation: leftRight 2s linear infinite;
+      }
+  
+      h3:after {
+        content: "\25b6";
+        position: absolute;
+        right: -50px;
+        -webkit-animation: leftRight 2s linear infinite reverse;
+        animation: leftRight 2s linear infinite reverse;
+      }
+  
+      @-webkit-keyframes leftRight {
+        0% {
+          -webkit-transform: translateX(0)
+        }
+  
+        25% {
+          -webkit-transform: translateX(-10px)
+        }
+  
+        75% {
+          -webkit-transform: translateX(10px)
+        }
+  
+        100% {
+          -webkit-transform: translateX(0)
+        }
+      }
+  
+      @keyframes leftRight {
+        0% {
+          transform: translateX(0)
+        }
+  
+        25% {
+          transform: translateX(-10px)
+        }
+  
+        75% {
+          transform: translateX(10px)
+        }
+  
+        100% {
+          transform: translateX(0)
+        }
+      }
+    </style>
+
+<body>
+
+
 <h1>Breast Cancer Prediction</h1>
-<div>
+<br>
+<div class="w3-container">
 
 <form action="{{ url_for('views.bcancer')}}" method="post">
-    <label for="">Radius Mean : </label>
-    <input type="text" name="radius_mean" id="radius_mean"><br>
+    <input type="text" name="radius_mean" id="radius_mean" placeholder="Radius Mean">
 
-    <label for="">Texture Mean : </label>
-    <input type="text" name="texture_mean" id="textture_mean"><br>
+    <input type="text" name="texture_mean" id="textture_mean" placeholder="Texture Mean">
 
-    <label for="">Perimeter Mean : </label>
-    <input type="text" name="perimeter_mean" id="perimeter_mean"><br>
+    <input type="text" name="perimeter_mean" id="perimeter_mean" placeholder="Perimeter Mean ">
 
-    <label for="">Area Mean : </label>
-    <input type="text" name="area_mean" id="area_mean"><br>
+    <input type="text" name="area_mean" id="area_mean" placeholder="Area Mean">
 
-    <label for="">Smoothness Mean : </label>
-    <input type="text" name="smoothness_mean" id="smoothness_mean"><br>
+    <input type="text" name="smoothness_mean" id="smoothness_mean" placeholder="Smoothness Mean">
 
-    <label for="">Copactness Mean : </label>
-    <input type="text" name="compactness_mean" id="compactness_mean"><br>
+    <input type="text" name="compactness_mean" id="compactness_mean" placeholder="Copactness Mean">
 
-    <label for="">Cancavity Mean : </label>
-    <input type="text" name="concavity_mean" id="concavity_mean"><br>
+    <input type="text" name="concavity_mean" id="concavity_mean" placeholder="Cancavity Mean">
 
-    <label for="">Concave Points Mean : </label>
-    <input type="text" name="concave_points_mean" id="concave_points_mean"><br>
+    <input type="text" name="concave_points_mean" id="concave_points_mean" placeholder="Concave Points Mean">
 
-    <label for="">Symmetry Mean : </label>
-    <input type="text" name="symmetry_mean" id="symmetry_mean"><br>
+    <input type="text" name="symmetry_mean" id="symmetry_mean" placeholder="Symmetry Mean">
 
-    <label for="">Fractal Dimension Mean : </label>
-    <input type="text" name="fractal_dimension_mean" id="fractal_dimension_mean"><br>
+    <input type="text" name="fractal_dimension_mean" id="fractal_dimension_mean" placeholder="Fractal Dimension Mean">
 
-    <label for="">Radius se : </label>
-    <input type="text" name="radius_se" id="radius_se"><br>
+    <input type="text" name="radius_se" id="radius_se" placeholder="Radius se">
 
-    <label for="">Texture se : </label>
-    <input type="text" name="texture_se" id="texture_se"><br>
+    <input type="text" name="texture_se" id="texture_se" placeholder="Texture se">
 
-    <label for="">Perimeter se : </label>
-    <input type="text" name="perimeter_se" id="perimeter_se"><br>
+    <input type="text" name="perimeter_se" id="perimeter_se" placeholder="Perimeter se">
 
-    <label for="">Area se : </label>
-    <input type="text" name="area_se" id="area_se"><br>
+    <input type="text" name="area_se" id="area_se" placeholder="Area se">
 
-    <label for="">Smoothness se : </label>
-    <input type="text" name="smoothness_se" id="smoothness_se"><br>
+    <input type="text" name="smoothness_se" id="smoothness_se" placeholder="Smoothness se">
 
-    <label for="">Compactness se : </label>
-    <input type="text" name="compactness_se" id="compactness_se"><br>
+    <input type="text" name="compactness_se" id="compactness_se" placeholder="Compactness se">
 
-    <label for="">Concavity se : </label>
-    <input type="text" name="concavity_se" id="concavity_se"><br>
+    <input type="text" name="concavity_se" id="concavity_se" placeholder="Concavity se">
 
-    <label for="">Concave Points se : <label>
-    <input type="text" name="concave_points_se" id="concave_points_se"><br>
+    <input type="text" name="concave_points_se" id="concave_points_se" placeholder="Concave Points se">
 
-    <label for="">Symmetry se : </label>
-    <input type="text" name="symmetry_se" id="symmetry_se"><br>
+    <input type="text" name="symmetry_se" id="symmetry_se" placeholder="Symmetry se">
 
-    <label for="">Fractal Dimension se : </label>
-    <input type="text" name="fractal_dimension_se" id="fractal_dimension_se"><br>
+    <input type="text" name="fractal_dimension_se" id="fractal_dimension_se" placeholder="Fractal Dimension se">
 
-    <label for="">Radius Worst : </label>
-    <input type="text" name="radius_worst" id="radius_worst"><br>
+    <input type="text" name="radius_worst" id="radius_worst" placeholder=">Radius Worst">
 
-    <label for="">Texture Worst : </label>
-    <input type="text" name="texture_worst" id="texture_worst"><br>
+    <input type="text" name="texture_worst" id="texture_worst" placeholder="Texture Worst">
 
-    <label for="">Perimeter Worst : </label>
-    <input type="text" name="perimeter_worst" id="perimeter_worst"><br>
+    <input type="text" name="perimeter_worst" id="perimeter_worst" placeholder="Perimeter Worst">
 
-    <label for="">Area Worst : </label>
-    <input type="text" name="area_worst" id="area_worst"><br>
+    <input type="text" name="area_worst" id="area_worst" placeholder="Area Worst">
  
-    <label for="">Smoothness Worst : </label>
-    <input type="text" name="smoothness_worst" id="smoothness_worst"><br>
+    <input type="text" name="smoothness_worst" id="smoothness_worst" placeholder="Smoothness Worst">
 
-    <label for="">Compactness Worst : </label>
-    <input type="text" name="compactness_worst" id="compactness_worst"><br>
+    <input type="text" name="compactness_worst" id="compactness_worst" placeholder="Compactness Worst">
 
-    <label for="">Concavity Worst : </label>
-    <input type="text" name="concavity_worst" id="concavity_worst"><br>
+    <input type="text" name="concavity_worst" id="concavity_worst" placeholder="Concavity Worst">
 
-    <label for="">Concave Points Worst : </label>
-    <input type="text" name="concave_points_worst" id="concave_points_worst"><br>
+    <input type="text" name="concave_points_worst" id="concave_points_worst" placeholder="Concave Points Worst">
 
-    <label for="">Symmetry Worst : </label>
-    <input type="text" name="symmetry_worst" id="symmetry_worst"><br>
+    <input type="text" name="symmetry_worst" id="symmetry_worst" placeholder="Symmetry Worst">
 
-    <label for="">Fractal Dimension Worst : </label>
-    <input type="text" name="fractal_dimension_worst" id="fractal_dimension_worst"><br>
-
-    <button type="submit">Predict</button>
+    <input type="text" name="fractal_dimension_worst" id="fractal_dimension_worst" placeholder="Fractal Dimension Worst">
+    <br><br>
+    <button type="submit" class="w3-border-red w3-round-large w3-center w3-indigo w3-button w3-btn w3-animate-bottom">Predict</button>
 </form>
 </div>
-<br>
-<br>
+<div class="container w3-text-white">
+    <h3>Output</h3>
+    <br>
 
 {{ prediction_text }} {{ per }}<br>
+
+</body>
+<script>
+    $(document).ready(function () {
+        $('#dtDynamicVerticalScrollExample').DataTable({
+            "scrollY": "50vh",
+            "scrollCollapse": true,
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+</html>

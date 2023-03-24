@@ -215,3 +215,13 @@ def bcancer():
 @login_required
 def bcancer_history():
     return render_template('cancer_history.html', user=current_user)
+
+@views.route('/liver')
+@login_required
+def liver():
+    return render_template('liver_pred.html')
+
+@views.route('/liver_history')
+@login_required
+def liver_history():
+    return render_template('liver_history.html')

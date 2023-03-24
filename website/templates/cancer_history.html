@@ -156,7 +156,7 @@ h3:after {
 }
 
     </style>
-    <body>
+<body>
         <div class="container">
 <h1>Breast Cancer History</h1>
   <table id="dtDynamicVerticalScrollExample" class="rwd-table table table-striped table-bordered table-sm" cellspacing="0"
@@ -174,7 +174,7 @@ h3:after {
         <th>Concave Points Mean</th>
         <th>Symmetry Mean</th>
         <th>Fractal Dimension Mean</th>
-        <th>Output<th>
+        <th>Output</th>
       </tr>
       {% for bcancer in user.bcancer %}
       <tr>
@@ -189,7 +189,7 @@ h3:after {
         <th>{{ bcancer.concave_points_mean }}</th>
         <th>{{ bcancer.symmetry_mean }}</th>
         <th>{{ bcancer.fractal_dimension_mean }}</th>
-        <th>{{ bcancer.output }}</th>
+        <th>{{ bcancer.outcome }}</th>
       </tr>
       {% endfor %}
     </tbody>
