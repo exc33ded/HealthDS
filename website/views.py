@@ -8,6 +8,16 @@ import pickle
 import pandas as pd
 import numpy as np
 
+import sys
+import os
+import glob
+import re
+from werkzeug.utils import secure_filename
+
+# Keras
+from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
 
 views = Blueprint('views', __name__)
 
@@ -278,3 +288,56 @@ def liver():
 @login_required
 def liver_history():
     return render_template('liver_history.html', user=current_user)
+
+
+# ------------------------------ Deep Learning --------------------------- #
+# Model saved with Keras model.save()
+MODEL_PATH ='model/model_vgg19.h5'
+
+# Load your trained model
+model = load_model(MODEL_PATH)
+
+def model_predict(img_path, model):
+    img = image.load_img(img_path, target_size=(224, 224))
+
+    # Preprocessing the image
+    x = image.img_to_array(img)
+    # x = np.true_divide(x, 255)
+    ## Scaling
+    x=x/255
+    x = np.expand_dims(x, axis=0)
+
+    x = preprocess_input(x)
+
+    preds = model.predict(x)
+    preds=np.argmax(preds, axis=1)
+    print(preds)
+    if preds==0:
+        preds="The Person is Infected With Malaria"
+    else:
+        preds="The Person is not Infected With Malaria"
+    return preds
+
+@views.route('/malaria', methods=['GET'])
+@login_required
+def malaria():
+    return render_template('malaria.html')
+
+@views.route('/malaria_pred', methods=['GET', 'POST'])
+@login_required
+def upload():
+    if request.method == 'POST':
+        # Get the file from post request
+        f = request.files['file']
+
+        # Save the file to ./uploads
+        basepath = os.path.dirname(__file__)
+        file_path = os.path.join(
+            basepath, 'uploads', secure_filename(f.filename))
+        f.save(file_path)
+
+        # Make prediction
+        preds = model_predict(file_path, model)
+        result=preds
+        return result
+    return None

@@ -19,3 +19,4 @@ matplotlib==3.6.2
 seaborn==0.12.1
 flask-sqlalchemy==3.0.2
 flask-login
+tensorflow==2.12.0
