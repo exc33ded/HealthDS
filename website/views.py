@@ -51,6 +51,7 @@ def diabetes():
         prediction = model1.predict(input_data_reshaped)
         senddata=""
         predi = ""
+        print(prediction[0])
         if (prediction[0]== 0):
             senddata='According to the given details person does not have Diabetes'
             predi = "Not Diabetic"
@@ -373,3 +374,26 @@ def malariapredictPage():
         return render_template('malaria_predict.html')
 
 
+@views.route("/pneumonia", methods=['GET', 'POST'])
+def pneumoniaPage():
+    return render_template('pneumonia.html')
+
+@views.route("/pneumoniapredict", methods = ['POST', 'GET'])
+def pneumoniapredictPage():
+    if request.method == 'POST':
+        try:
+            if 'image' in request.files:
+                img = Image.open(request.files['image']).convert('L')
+                img = img.resize((36,36))
+                img = np.asarray(img)
+                img = img.reshape((1,36,36,1))
+                img = img / 255.0
+                model = load_model("model/pneumonia.h5")
+                pred = np.argmax(model.predict(img)[0])
+                print(pred)
+        except:
+            message = "Please upload an Image"
+            return render_template('pneumonia.html', message = message)
+        return render_template('pneumonia_predict.html', pred = pred)
+    else:
+        return render_template('pneumonia_predict.html')
