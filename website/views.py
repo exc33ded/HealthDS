@@ -15,6 +15,7 @@ import re
 from werkzeug.utils import secure_filename
 
 # Keras
+from PIL import Image
 from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
@@ -292,52 +293,83 @@ def liver_history():
 
 # ------------------------------ Deep Learning --------------------------- #
 # Model saved with Keras model.save()
-MODEL_PATH ='model/model_vgg19.h5'
+# MODEL_PATH ='model/model_vgg19.h5'
 
-# Load your trained model
-model = load_model(MODEL_PATH)
+# # Load your trained model
+# model = load_model(MODEL_PATH)
 
-def model_predict(img_path, model):
-    img = image.load_img(img_path, target_size=(224, 224))
+# def model_predict(img_path, model):
+#     img = image.load_img(img_path, target_size=(224, 224))
 
-    # Preprocessing the image
-    x = image.img_to_array(img)
-    # x = np.true_divide(x, 255)
-    ## Scaling
-    x=x/255
-    x = np.expand_dims(x, axis=0)
+#     # Preprocessing the image
+#     x = image.img_to_array(img)
+#     # x = np.true_divide(x, 255)
+#     ## Scaling
+#     x=x/255
+#     x = np.expand_dims(x, axis=0)
 
-    x = preprocess_input(x)
+#     x = preprocess_input(x)
 
-    preds = model.predict(x)
-    preds=np.argmax(preds, axis=1)
-    print(preds)
-    if preds==0:
-        preds="The Person is Infected With Malaria"
-    else:
-        preds="The Person is not Infected With Malaria"
-    return preds
+#     preds = model.predict(x)
+#     print(preds)
+#     preds=np.argmax(preds, axis=1)
+#     print()
 
-@views.route('/malaria', methods=['GET'])
+#     if preds==0:
+#         preds="The Person is Infected With Malaria"
+#     else:
+#         preds="The Person is not Infected With Malaria"
+#     return preds
+
+# @views.route('/malaria', methods=['GET'])
+# @login_required
+# def malaria():
+#     return render_template('malaria.html')
+
+# @views.route('/malaria_pred', methods=['GET', 'POST'])
+# @login_required
+# def upload():
+#     if request.method == 'POST':
+#         # Get the file from post request
+#         f = request.files['file']
+
+#         # Save the file to ./uploads
+#         basepath = os.path.dirname(__file__)
+#         file_path = os.path.join(
+#             basepath, 'uploads', secure_filename(f.filename))
+#         f.save(file_path)
+
+#         # Make prediction
+#         preds = model_predict(file_path, model)
+#         result=preds
+#         return result
+#     return None
+
+# Malaria
+@views.route("/malaria", methods=['GET', 'POST'])
 @login_required
-def malaria():
-    return render_template('malaria.html')
+def malariaPage():
+    return render_template('malaria_new.html')
 
-@views.route('/malaria_pred', methods=['GET', 'POST'])
+@views.route("/malariapredict", methods = ['POST', 'GET'])
 @login_required
-def upload():
+def malariapredictPage():
     if request.method == 'POST':
-        # Get the file from post request
-        f = request.files['file']
+        try:
+            if 'image' in request.files:
+                img = Image.open(request.files['image'])
+                img = img.resize((36,36))
+                img = np.asarray(img)
+                img = img.reshape((1,36,36,3))
+                img = img.astype(np.float64)
+                model = load_model("model/malaria.h5")
+                pred = np.argmax(model.predict(img)[0])
+                print(pred)
+        except:
+            message = "Please upload an Image"
+            return render_template('malaria_new.html', message = message)
+        return render_template('malaria_predict.html', pred = pred)
+    else:
+        return render_template('malaria_predict.html')
 
-        # Save the file to ./uploads
-        basepath = os.path.dirname(__file__)
-        file_path = os.path.join(
-            basepath, 'uploads', secure_filename(f.filename))
-        f.save(file_path)
 
-        # Make prediction
-        preds = model_predict(file_path, model)
-        result=preds
-        return result
-    return None
