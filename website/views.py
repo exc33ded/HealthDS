@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, flash, request, jsonify
 from flask_login import login_required, current_user
-from .models import Diabetes, User, Heart, BCancer, Liver
+from .models import Diabetes, User, Heart, BCancer, Liver, User
 from . import db
 import pickle
 import pandas as pd
@@ -206,10 +206,10 @@ def bcancer():
         senddata=""
         if (prediction[0] == 0):
             predi = "Benign"
-            senddata='According to the given details the chance of Benign is '
+            senddata='According to the given details the patient have a chance of Benign Type Cancer.'
         else:
             predi = "Malignant"
-            senddata='According to the given details the chance of Malignant is '
+            senddata='According to the given details the patient have a chance of Malignant Type Cancer.'
 
         new_data = BCancer(radius_mean=radius_mean,
                         texture_mean=texture_mean, 

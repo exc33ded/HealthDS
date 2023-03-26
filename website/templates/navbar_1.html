@@ -8,6 +8,10 @@
     <title></title>
     <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/w3.css') }}">
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
    <style>
     #lefty{
         text-align: left;
@@ -22,10 +26,10 @@
             <!-- <a href="#" class="logo">HDS</a> -->
             <!-- <div class="toggle"></div> -->
             <nav class="w3-bar w3-black">
-                    <a href="" class='w3-bar-item w3-padding-24 w3-left w3-xlarge'>HDS</a>
-                    <a href="{{url_for('auth.sign_up')}}" class='w3-bar-item w3-right w3-xlarge w3-padding-24'>Register</a>
-                    <a href="{{url_for('auth.login')}}" class='w3-bar-item w3-right w3-padding-24 w3-xlarge'>Login</a>
-                    <a href="{{url_for('auth.main')}}" class='w3-bar-item w3-right w3-padding-24 w3-xlarge'>Home</a>
+                    <a href="" class='w3-bar-item w3-button w3-padding-24 w3-left w3-xlarge'>HDS</a>
+                    <a href="{{url_for('auth.sign_up')}}" class='w3-bar-item w3-button w3-right w3-xlarge w3-padding-24'>Register</a>
+                    <a href="{{url_for('auth.login')}}" class='w3-bar-item w3-button w3-right w3-padding-24 w3-xlarge'>Login</a>
+                    <a href="{{url_for('auth.main')}}" class='w3-bar-item w3-button w3-right w3-padding-24 w3-xlarge'>Home</a>
             </nav>
         </header>
        <script>

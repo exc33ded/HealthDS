@@ -77,3 +77,6 @@ class User(db.Model, UserMixin):
     heart = db.relationship('Heart')
     bcancer = db.relationship('BCancer')
     liver = db.relationship('Liver')
+
+    def __repr__(self):
+        return '<Name %r>' % self.name
