@@ -205,11 +205,17 @@ def bcancer():
         prediction = model_bcancer.predict(input_data_reshaped)
         senddata=""
         if (prediction[0] == 0):
+            prediction = model_bcancer.predict_proba(input_data_reshaped)[:, 0]
+            y_prob=round(prediction[0], 3)
+            y_prob=y_prob*100
             predi = "Benign"
-            senddata='According to the given details the patient have a chance of Benign Type Cancer.'
+            senddata='According to the given details the patient have a chance of Benign Type Cancer with the accuracy of '
         else:
+            prediction = model_bcancer.predict_proba(input_data_reshaped)[:, 1]
+            y_prob=round(prediction[0], 3)
+            y_prob=y_prob*100
             predi = "Malignant"
-            senddata='According to the given details the patient have a chance of Malignant Type Cancer.'
+            senddata='According to the given details the patient have a chance of Malignant Type Cancer with the accuracy of'
 
         new_data = BCancer(radius_mean=radius_mean,
                         texture_mean=texture_mean, 
@@ -226,7 +232,7 @@ def bcancer():
         db.session.add(new_data)
         db.session.commit()
 
-        return render_template('cancer_pred.html', prediction_text=senddata)
+        return render_template('cancer_pred.html', prediction_text=senddata, y_prob=y_prob)
 
 @views.route('/bcancer_history')
 @login_required
