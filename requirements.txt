@@ -10,15 +10,25 @@ pandas
 gunicorn==20.1.0
 python-dateutil==2.8.2
 pytz==2022.7
+# scikit-learn==1.2.0
+# scipy==1.9.3
+# six==1.16.0
+# threadpoolctl==3.1.0
+# Werkzeug==2.2.2
+# zipp==3.11.0
+# matplotlib==3.6.2
+# seaborn==0.12.1
+# flask-sqlalchemy==3.0.2
+# flask-login
+# tensorflow==2.12.0
 scikit-learn
-#scikit-learn==1.2.0
-scipy==1.9.3
-six==1.16.0
-threadpoolctl==3.1.0
-Werkzeug==2.2.2
-zipp==3.11.0
-matplotlib==3.6.2
-seaborn==0.12.1
-flask-sqlalchemy==3.0.2
+scipy
+six
+threadpoolctl
+Werkzeug
+zipp
+matplotlib
+seaborn
+flask-sqlalchemy
 flask-login
-tensorflow==2.12.0
+tensorflow
