@@ -36,11 +36,11 @@
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $('#myTable').DataTable();
         });
-    </script>
+    </script> -->
     <title>Document</title>
 </head>
 
@@ -50,7 +50,7 @@
       </div>
       <div class="container">
         <div class="row  justify-content-center">
-            <div class="col-md-9 col-sm-9">
+            <div class="col-md-9 col-sm-9" style="text-align: justify;">
               The project “Health Discernment System” has vast scope, with the development and continues evolving 
               of technology this project will be able to handle most of the chronic diseases. <br><br>
               This system will aid in the efficient detection of medical diagnostic data and will shorten the time
@@ -61,7 +61,7 @@
                receive the results whenever and wherever they choose.    
             </div>
             <div class="col-md-3 col-sm-3">
-                <img src="../../images/imagesS/profileImages/download.jpg" class="rounded" alt="image">
+              <img src="{{ url_for('static', filename='css/Black Simple Monoline Real Estate Service Logo.png') }}" height="250" alt="Logo">
             </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
     
     <div class="container my-4">
         <div class="container text-bg-danger my-4">
-            <h1 style="text-align: center;">How perfect are we?</h1>
+            <h1 style="text-align: center;">About the values to input</h1>
           </div>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -175,7 +175,7 @@
     </div>
     <div class="card text-center">
         <div class="card-footer text-body-secondary">
-            Sarim Bhai
+            <a href="https://github.com/exc33ded" target="_blank" style="text-decoration:none; color:black ">Mohammed Sarim</a>
           </div>
       </div>
 </body>
