@@ -159,20 +159,39 @@
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="accordion-body" style="text-align:justify;">
+                  <strong>Age: </strong>This refers to the patient's age in years. Age is a risk factor for heart disease, as the risk of developing heart disease increases with age.<br>
+                  <strong>Gender: </strong>This refers to the patient's biological sex. Men are generally at higher risk for heart disease than women, although the risk for women increases after menopause.<br>
+                  <strong>Total Bilirubin: </strong>Bilirubin is a waste product that is produced when red blood cells break down. Total bilirubin measures the total amount of bilirubin in the blood, including both direct and indirect bilirubin.<br>
+                  <strong>Direct Bilirubin: </strong>: Direct bilirubin measures the amount of bilirubin that is excreted by the liver into the bile ducts.<br>
+                  <strong>Alkaline Phosphotase: </strong>Alkaline phosphatase is an enzyme that is found in many tissues throughout the body, including the liver. Elevated levels of alkaline phosphatase can be a sign of liver disease.<br>
+                  <strong>Alamine Aminotranferase: </strong>It is an enzyme that is found primarily in the liver. Elevated levels of ALT can be a sign of liver damage or disease.<br>
+                  <strong>Aspartate Aminotranferase: </strong>It is an enzyme that is found in many tissues throughout the body, including the liver. Elevated levels of AST can be a sign of liver damage or disease.<br>
+                  <strong>Total Protiens: </strong>Total proteins measures the total amount of proteins in the blood, including both albumin and globulin.<br>
+                  <strong>Albumin: </strong>Albumin is a protein that is produced by the liver. Low levels of albumin can be a sign of liver disease.<br>
+                  <strong>Albumin and Globulin Ratio: </strong> The albumin and globulin ratio compares the amount of albumin to the amount of globulin in the blood. This ratio can provide additional information about the patient's liver function and overall health.<br>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  Breast Cancer Disease
+                  Breast Cancer
                 </button>
               </h2>
               <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="accordion-body" style="text-align:justify;">
+                  <strong>Radius: </strong>The mean distance from the center of the tumor to its perimeter.<br>
+                  <strong>Texture: </strong>The standard deviation of the gray-scale values in the image of the tumor.<br>
+                  <strong>Perimter: </strong>The total length of the tumor boundary.<br>
+                  <strong>Area: </strong>The area of the tumor.<br>
+                  <strong>Smoothness: </strong>The local variation in radius lengths.<br>
+                  <strong>Compactness: </strong>The perimeter^2 / area - 1.0.<br>
+                  <strong>Concavity: </strong>The severity of concave portions of the contour.<br>
+                  <strong>Concave Points: </strong>The number of concave portions of the contour.<br>
+                  <strong>Symmetry: </strong> The symmetry of the tumor.<br>
+                  <strong>Fractal Dimension: </strong>Fractal dimension is a measure of the complexity or "roughness" of a shape, often used to quantify the complexity of tumor boundaries in medical imaging.<br><br>
+                  <strong><i>Note: </i></strong><i>The measurements of various features for breast cancer cells, includes mean, standard error, and worst values. The mean represents the average value of a feature across all the cells in the image, while the worst represents the largest or most extreme value of that feature found in any cell in the image. The standard error measures the variability or uncertainty in the measurements of that feature across cells. These features are often used to diagnose or predict the malignancy of a breast cancer tumor.</i><br>
                 </div>
               </div>
             </div>
@@ -184,7 +203,9 @@
               </h2>
               <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  <b>Sample Input</b><br><br>
+                  <img src="{{ url_for('static', filename='C3thin_original_IMG_20150608_163002_cell_81.png') }}" height="250" alt="Malaria Cell" alt="">
+                  <img src="{{ url_for('static', filename='C39P4thinF_original_IMG_20150622_105554_cell_13.png') }}" height="250" alt="Malaria Cell" alt="">
                 </div>
               </div>
             </div>
@@ -196,7 +217,9 @@
               </h2>
               <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                  <b>Sample Input</b><br><br>
+                  <img src="{{ url_for('static', filename='n p.jpeg') }}" height="250" alt="X-ray" alt="">
+                  <img src="{{ url_for('static', filename='p p.jpeg') }}" height="250" alt="X-ray" alt="">
                 </div>
               </div>
             </div>
