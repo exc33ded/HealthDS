@@ -1,3 +1,199 @@
 {% include 'navbar.html' %}
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_front.css') }}">
+    <title>HDS</title>
+</head>
+<body>
+      <div class="container text-bg-warning my-2">
+        <h1 style="text-align: center;">What is HDS?</h1>
+      </div>
+      <div class="container">
+        <div class="row  justify-content-center">
+            <div class="col-md-9 col-sm-9" style="text-align: justify;">
+                The project “Health Discernment System” has vast scope, with the development and continues evolving 
+                of technology this project will be able to handle most of the chronic diseases. <br><br>
+                This system will aid in the efficient detection of medical diagnostic data and will shorten the time
+                 required to prevent the last-minute rush. In this system, I will build a user-friendly interference 
+                 so that even a user who is unfamiliar with the disease may use it and obtain their result, i.e. the 
+                 result being positive or normal when detecting the sickness. This approach will save the patient a 
+                 lot of time since they will not have to go to their doctor to have the results validated. They can 
+                 receive the results whenever and wherever they choose.<br><br>
+                This system will also assist to lighten the doctor's grip and enable them save more lives by avoiding 
+                last-minute quandaries. This method will also assist the user and the doctor in keeping track of the 
+                patient's history in order to keep their health in check. This method will also aid in illness prognosis 
+                based just on imaging. The user will simply need to enter the image, and the outcome will be presented. We can use this to lower the number of deaths from illnesses like pneumonia and malaria.<br>
+
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <img src="{{ url_for('static', filename='css/Black Simple Monoline Real Estate Service Logo.png') }}" height=400 class="rounded" alt="image">
+            </div>
+        </div>
+      </div>
+
+      <div class="container text-bg-success my-2">
+        <h1 style="text-align: center;">What functionality can it provide?</h1>
+      </div>
+
+      <div class="container my-4">
+        <div class="row  justify-content-center">
+            <div class="col-md-3 col-sm-3">
+                <img src="{{ url_for('static', filename='css/hospital-logo-design-vector-medical-cross_53876-136743.avif') }}" height=250 class="rounded" alt="image">
+            </div>
+            <div class="col-md-9 col-sm-9" style="text-align: justify;">
+                The Health Discernment System is a comprehensive platform that offers various functionalities to its 
+                users. One of its key features is the ability to predict diseases through a framework that leverages 
+                machine learning algorithms. In addition, the system allows users to create accounts and enter data 
+                inputs for diseases, which are also processed through machine learning models. <br><br>
+                Another feature of the system is its support for image inputs, which are used to predict diseases 
+                through deep learning models. User management is another important aspect of the platform, as it 
+                enables administrators to manage user accounts and data. All data inputs and other information are 
+                stored in a centralized manner, making it easy to access and manage.<br>
+            </div>
+        </div>
+      </div>
+
+      <div class="container my-4">
+        <div class="row  justify-content-center">
+            <div class="col-md-9 col-sm-9" style="text-align: justify;">
+                The Health Discernment System also provides a user-friendly interface that enables users to interact
+                with the platform easily. The system offers information for every data input, which helps users to 
+                understand and navigate the system efficiently. The platform also supports the management of custom-created 
+                machine learning and deep learning models that are used for disease prediction. Overall, the Health Discernment 
+                System offers a robust set of tools for disease prediction and management, making it an essential tool 
+                for healthcare professionals and researchers.
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <img src="{{ url_for('static', filename='css/stethoscope-service-medical.png') }}" height=250 class="rounded" alt="image">
+            </div>
+        </div>
+      </div>
+      <div class="container text-bg-success my-5">
+        <h1 style="text-align: center;">Know our models</h1>
+      </div>
+    <div class="containe">
+        <div class="car">
+            <div class="imgB">
+                <img src="{{ url_for('static', filename='logo/Diabetes Logo.gif') }}" height=250 class="rounded" alt="Diabetes">
+            </div>
+            <div class="conten" style="text-align:justify;">
+                <h2>Diabetes</h2>
+                <p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. Blood glucose is your main source of energy and comes from the food you eat. Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy. Sometimes your body doesn’t make enough—or any—insulin or doesn’t use insulin well. Glucose then stays in your blood and doesn’t reach your cells.
+                    <h5>Symptoms</h5>
+                    <ul>
+                        <li>Urinating often.</li>
+                        <li>Feeling very thirsty.</li>
+                        <li>Extreme fatigue.</li>
+                        <li>Blurry vision.</li>
+                    </ul>    
+                <br><b>Wiki Link</b><br>
+                </p>
+            </div>
+        </div>
+        <div class="car">
+            <div class="imgB">
+                <img src="{{ url_for('static', filename='logo/Breast Cancer Logo.gif') }}" height=250 class="rounded" alt="Diabetes">
+            </div>
+            <div class="conten" style="text-align:justify;">
+                <h2>Breast Cancer Disease</h2>
+                <p>Breast cancer is cancer that forms in the cells of the breasts.
+                    After skin cancer, breast cancer is the most common cancer diagnosed in women in the United States. Breast cancer can occur in both men and women, but it's far more common in women.
+                <h5>Symptoms</h5>
+                <ul>
+                    <li>A breast lump or thickening that feels different from the surrounding tissue</li>
+                    <li>Change in the size, shape or appearance of a breast</li>
+                    <li>Changes to the skin over the breast, such as dimpling</li>
+                    <li>Redness or pitting of the skin over your breast, like the skin of an orange</li>
+                </ul>
+                    <br><b>Wiki Link</b>
+                    <br> 
+                </p>
+            </div>
+        </div>
+        <div class="car">
+            <div class="imgB">
+                <img src="{{ url_for('static', filename='logo/Liver Logo.gif') }}" height=250 class="rounded" alt="Diabetes">
+            </div>
+            <div class="conten" style="text-align:justify;">
+                <h2>Liver Disease</h2>
+                <p>Symptoms of liver disease can vary, but they often include swelling of the abdomen and legs, bruising easily, changes in the color of your stool and urine, and jaundice, or yellowing of the skin and eyes. Sometimes there are no symptoms. Tests such as imaging tests and liver function tests can check for liver damage and help to diagnose liver diseases.</p>
+            </div>
+        </div>
+    </div>
+    
+  <div class="containe">
+      <div class="car">
+          <div class="imgB">
+            <img src="{{ url_for('static', filename='logo/Heart Logo.gif') }}" height=250 class="rounded" alt="Diabetes">
+          </div>
+          <div class="conten" style="text-align:justify;">
+              <h2>Heart Disease</h2>
+              <p>Heart disease refers to a range of conditions that affect the heart, including coronary artery 
+                disease, heart failure, and arrhythmias, and is a leading cause of death globally. Risk factors 
+                for heart disease include high blood pressure, high cholesterol, smoking, diabetes, obesity, and 
+                a family history of heart disease. Symptoms may include Signs include chest pain, shortness of breath, 
+                fatigue, dizziness, irregular heartbeat, leg swelling, and cough. <br><b>Wiki Link</b><br>
+              </p>
+          </div>
+      </div>
+      <div class="car">
+          <div class="imgB">
+            <img src="{{ url_for('static', filename='logo/Malaria logo.gif') }}" height=250 class="rounded" alt="Diabetes">
+          </div>
+          <div class="conten" style="text-align:justify;">
+              <h2>Malaria</h2>
+              <p><p>Malaria is a mosquito-borne infectious disease that affects humans and other animals. Malaria causes symptoms that typically include fever, tiredness, vomiting, and headaches. In severe cases it can cause yellow skin, seizures, coma, or death. Symptoms usually begin ten to fifteen days after being bitten by an infected mosquito. If not properly treated, people may have recurrences of the disease months later.
+              <h5>Symptoms</h5>
+              <ul>
+                  <li>Fever. This is the most common symptom.</li>
+                  <li>Chills</li>
+                  <li>Headache</li>
+                  <li>Nausea and vomiting</li>
+              </ul>
+                  <br><b>Wiki Link</b>
+                  <br> 
+              </p>
+          </div>
+      </div>
+      <div class="car">
+          <div class="imgB">
+            <img src="{{ url_for('static', filename='logo/Pneumonia logo.gif') }}" height=250 class="rounded" alt="Diabetes">
+          </div>
+          <div class="conten" style="text-align:justify;">
+              <h2>Pneumonia</h2>
+              <p>Pneumonia is an infection that inflames the air sacs in one or both lungs. The air sacs may fill with fluid or pus (purulent material), causing cough with phlegm or pus, fever, chills, and difficulty breathing. A variety of organisms, including bacteria, viruses and fungi, can cause pneumonia.
+              <h5>Symptoms</h5>
+              <ul>
+                  <li>Cough, which may produce greenish, yellow or even bloody mucus.</li>
+                  <li>Fever, sweating and shaking chills.</li>
+                  <li>Shortness of breath.</li>
+                  <li>Rapid, shallow breathing.</li>
+              </ul>
+                  <br><b>Wiki Link</b>
+                  <br> 
+              </p>
+          </div>
+      </div>
+  </div>
+  <div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Facebook</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Instagram</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Twittter</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Gmail</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Phone</a></li>
+      </ul>
+      <p class="text-center text-body-secondary">Made with &hearts; by Sarim</p>
+    </footer>
+  </div>
+</body>
+</html>
 {% endblock %}
