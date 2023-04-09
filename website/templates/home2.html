@@ -1,14 +1,24 @@
 {% include "nav(logged).html" %}
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-<div class="alert alert-danger after-dismissible fade show" role="alert">
-  {{ message }}
-  <button type="button" class="btn-close float-right" area-label="Close" data-dismiss="alert">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    {% if category == 'error' %}
+    <div class="alert alert-danger after-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" area-label="Close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
 {% endfor %}
 {% endif %}
 {% endwith %}
@@ -46,7 +56,7 @@
 
 <body>
       <div class="container text-bg-warning my-2">
-        <h1 style="text-align: center;">What is HDS</h1>
+        <h1 style="text-align: center;">What is HDS?</h1>
       </div>
       <div class="container">
         <div class="row  justify-content-center">
@@ -102,31 +112,50 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Accordion Item #1
+                  Diabetes
                 </button>
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="accordion-body" style="text-align:justify;">
+                  <strong>Pregnancies: </strong>This refers to the number of times the patient has been pregnant.<br>
+                  <strong>Glucose Level: </strong>This is the patient's plasma glucose concentration measured two hours after an oral glucose tolerance test. Elevated glucose levels may indicate diabetes.<br>
+                  <strong>Blood Pressure Level: </strong>This is the patient's diastolic blood pressure. High blood pressure can be a risk factor for diabetes.<br>
+                  <strong>Skin Thickness: </strong>This is the thickness of the skin on the triceps, measured in millimeters. Increased skin thickness may be associated with insulin resistance, which is a key factor in the development of type 2 diabetes.<br>
+                  <strong>Insulin Level: </strong>This is the patient's 2-hour serum insulin level. Elevated insulin levels may indicate insulin resistance, which is a risk factor for diabetes.<br>
+                  <strong>Body Mass Index: </strong>This is the patient's body mass index, calculated as weight in kilograms divided by height in meters squared. High BMI is a risk factor for diabetes.<br>
+                  <strong>Diabetes Pedigree Function: </strong> This is a measure of the patient's family history of diabetes.<br>
+                  <strong>Age: </strong>This is the patient's age in years. As age increases, the risk of developing diabetes also increases.<br>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Accordion Item #2
+                  Heart Disease
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="accordion-body" style="text-align:justify;">
+                  <strong>Age: </strong>This refers to the patient's age in years. Age is a risk factor for heart disease, as the risk of developing heart disease increases with age.<br>
+                  <strong>Sex: </strong>This refers to the patient's biological sex. Men are generally at higher risk for heart disease than women, although the risk for women increases after menopause.<br>
+                  <strong>Chest Pain Type: </strong> This refers to the type of chest pain or discomfort experienced by the patient. There are four values for chest pain type, each corresponding to a different type of chest pain or discomfort. This variable can provide insight into the underlying cause of the patient's symptoms and can help guide diagnosis and treatment.<br>
+                  <strong>Resting Blood Pressure: </strong>This refers to the patient's blood pressure when they are at rest. High blood pressure is a risk factor for heart disease.<br>
+                  <strong>Serum cholesterol: </strong>This is the patient's serum cholesterol level, measured in milligrams per deciliter (mg/dL). High cholesterol is a risk factor for heart disease.<br>
+                  <strong>Fasting Blood Sugar: </strong>This indicates whether the patient has a fasting blood sugar level above 120 mg/dL, which may indicate diabetes or pre-diabetes. Diabetes is a risk factor for heart disease.<br>
+                  <strong>Resting Electrocardiographic Result: </strong><br>
+                  <strong>Maximum Heart Rate Achieved: </strong>This refers to the highest heart rate achieved by the patient during a stress test. This variable can provide insight into the patient's cardiovascular fitness and can help guide diagnosis and treatment.<br>
+                  <strong>Exercise Induced Angina: </strong>This indicates whether the patient experienced chest pain or discomfort during a stress test. This can be a sign of underlying heart disease.<br>
+                  <strong>Oldpeak: </strong> This variable measures the amount of ST segment depression on the patient's ECG during a stress test. ST depression can be a sign of underlying heart disease.<br>
+                  <strong>Slope of Peak: </strong> This variable describes the shape of the ST segment on the patient's ECG during a stress test. The slope of the ST segment can provide additional information about the underlying heart condition.<br>
+                  <strong>Number of Major Vessels: </strong>This refers to the number of major blood vessels in the heart that appear to be blocked or narrowed on a fluoroscopy image. This variable can provide insight into the extent of the patient's heart disease.<br>
+                  <strong>Thal: </strong>This variable describes the patient's thallium stress test results, which measure blood flow to the heart during exercise. There are three values for this variable, each corresponding to a different result on the thallium stress test. This variable can provide additional information about the underlying heart condition.<br>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
-                  Accordion Item #3
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Liver Disease
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -137,8 +166,8 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
-                  Accordion Item #4
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Breast Cancer Disease
                 </button>
               </h2>
               <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -149,8 +178,8 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
-                  Accordion Item #5
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFIve">
+                  Malaria
                 </button>
               </h2>
               <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -161,8 +190,8 @@
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
-                  Accordion Item #6
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                  Pneumonia
                 </button>
               </h2>
               <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
