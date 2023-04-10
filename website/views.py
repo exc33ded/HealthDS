@@ -52,7 +52,7 @@ def diabetes():
         senddata=""
         predi = ""
         print(prediction[0])
-        if (prediction[0]== 0):
+        if (prediction[0] == 0):
             senddata='According to the given details person does not have Diabetes'
             predi = "Not Diabetic"
         else:

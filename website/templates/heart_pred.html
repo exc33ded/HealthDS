@@ -11,60 +11,22 @@
     <!-- Main Input For Receiving Query to our ML -->
     <div class="w3-container">
         <form action="{{ url_for('views.heart') }}" method="POST">
-
-            <label class="w3-text-white" for="age">Age : </label>
-            <input class="w3-input" type="number"  id="age" name="age">
-            <br>
-
-            <label class="w3-text-white" for="sex">Sex : </label>
+            <input class="w3-input" type="number"  id="age" name="age" placeholder="Age">
             <select name="sex" id="sex" class="w3-select">
                 <option value="1">Male</option>
                 <option value="0">Female</option>
             </select>
-            <br>
-            <br>
-            <label class="w3-text-white" for="chest pain type">Chest pain type : </label>
-            <input class="w3-input" type="number" required="required" id="cp" name="cp">
-            <br>
-
-            <label class="w3-text-white" or="resting blood pressure">Resting Blood Pressure : </label>
-            <input class="w3-input" type="number" required="required" id="trestbps" name="trestbps">
-            <br>
-
-            <label class="w3-text-white" for="serum cholestoral in mg/dl">Serum cholestoral in mg/dl : </label>
-            <input class="w3-input" type="number" required="required" id="chol" name="chol">
-            <br>
-
-            <label class="w3-text-white" for="fasting blood pressure">Fasting Blood Pressure : </label>
-            <input class="w3-input" type="number" required="required" id="fbs" name="fbs">
-            <br>
-
-            <label class="w3-text-white" for="restecg">Resting Electrocardiographic Result : </label>
-            <input class="w3-input" type="number" required="required" id="restecg" name="restecg">
-            <br>
-
-            <label class="w3-text-white" for="thalach">Maximum Heart Rate Achieved : </label>
-            <input class="w3-input" type="number" required="required" id="thalach" name="thalach">
-            <br>
-
-            <label class="w3-text-white" for="exang">Exercise Induced Angina : </label>
-            <input class="w3-input" type="number" required="required" id="exang" name="exang">
-            <br>
-
-            <label class="w3-text-white" for="oldpeak">Oldpeak : </label>
-            <input class="w3-input" type="number" step="any" id="oldpeak" name="oldpeak" required="required">
-            <br>
-
-            <label class="w3-text-white" for="slope">Slope of Peak: </label>
-            <input class="w3-input" type="number" required="required" id="slope" name="slope">
-            <br>
-
-            <label class="w3-text-white" for="ca">Number of Major Vessels : </label>
-            <input class="w3-input" type="number" required="required" id="ca" name="ca">
-            <br>
-
-            <label class="w3-text-white" for="thal">Thal : </label>
-            <input class="w3-input" type="number" required="required" id="thal" name="thal">
+            <input class="w3-input" type="number" required="required" id="cp" name="cp" placeholder="Chest pain type">
+            <input class="w3-input" type="number" required="required" id="trestbps" name="trestbps" placeholder="Resting Blood Pressure">
+            <input class="w3-input" type="number" required="required" id="chol" name="chol" placeholder="Serum cholestoral in mg/dl">
+            <input class="w3-input" type="number" required="required" id="fbs" name="fbs" placeholder="Fasting Blood Pressure ">
+            <input class="w3-input" type="number" required="required" id="restecg" name="restecg" placeholder="Resting Electrocardiographic Result">
+            <input class="w3-input" type="number" required="required" id="thalach" name="thalach" placeholder="Maximum Heart Rate Achieved">
+            <input class="w3-input" type="number" required="required" id="exang" name="exang" placeholder="Exercise Induced Angina">
+            <input class="w3-input" type="number" step="any" id="oldpeak" name="oldpeak" required="required" placeholder="Oldpeak"> 
+            <input class="w3-input" type="number" required="required" id="slope" name="slope" placeholder="Slope of Peak">
+            <input class="w3-input" type="number" required="required" id="ca" name="ca" placeholder="Number of Major Vessels">
+            <input class="w3-input" type="number" required="required" id="thal" name="thal"  placeholder="Thal">
             <br>
             <input class="w3-border-red w3-round-large w3-center w3-indigo w3-button w3-btn w3-animate-bottom"
                 type="submit" value="Predict"><br><br>
